@@ -7,14 +7,6 @@ type Props = {}
 const AccessDenied = (props: Props) => {
     return (
         <div className="flex flex-col justify-center items-center h-[calc(100vh-70px)] bg-white">
-            <Image
-                src="/access-denied.png"
-                alt="Access Denied"
-                priority={true}
-                width={200}
-                height={190}
-            />
-
             <div className="items-center flex flex-col">
                 <div className="text-xl font-bold mt-[30px] text-center animate-bounce">
                     Access Denied

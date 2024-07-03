@@ -14,7 +14,6 @@ const handler = async (req: any, res: any) => {
           };
 
           try {
-            console.log("profile", profile);
             userData.name = profile.name;
           } catch (error) {
             console.error(error);

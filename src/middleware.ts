@@ -10,7 +10,6 @@ export default withAuth(
       return NextResponse.rewrite(new URL(`/access_denied`, req.url));
     }
 
-    console.log(req.nextauth.token.name, req.nextauth.token.email);
     if (!req.nextauth.token.email?.endsWith(process.env.COMPANY_HOSTED_DOMAIN!)) {
       return NextResponse.rewrite(new URL('/access_denied', req.url));
     }
