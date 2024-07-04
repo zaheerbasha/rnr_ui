@@ -25,8 +25,6 @@ const config: Config = {
         'hover-green': "#04df79",
         'custom-yellow': '#f59e0b',
         'hover-yellow': '#F19408',
-        'custom-blue': '#1d4ed8',
-        'custom-link-blue': '#1d4ed8',
         'custom-pink': '#f9a8d4',
         'custom-orange': '#FFA500',
         'custom-indigo': '#60a5fa',

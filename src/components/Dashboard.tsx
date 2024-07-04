@@ -1,6 +1,6 @@
 'use client'
 import { signOut, useSession } from 'next-auth/react';
-import '@/styles/dashboard.css'
+import '@/styles/darkmode.css'
 import React, { useState } from 'react'
 import { UserSession } from '@/types/userSession';
 import Image from 'next/image';
