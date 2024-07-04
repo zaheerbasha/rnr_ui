@@ -22,7 +22,9 @@ const Store = (props: Props) => {
                     {/* Right Side button */}
                     <div className="flex justify-between mx-4 items-stretch">
                         <div className="bg-custom-theme dark:bg-gray-100 dark:text-gray-800 text-white p-4 font-bold rounded-md">Balance: 2100</div>
-                        <button className="block my-auto bg-custom-theme hover:bg-hover-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-gray-500 text-white px-4 py-2 font-bold rounded-md">Add New Item</button>
+                        <button className="block my-auto bg-custom-theme hover:bg-hover-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-gray-500 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Add New Item</button>
                     </div>
 
                     {/* Badge Cards*/}
@@ -37,9 +39,7 @@ const Store = (props: Props) => {
                                 </div>
                                 <div className="flex flex-col justify-between items-center gap-2">
                                     <QuantityButton />
-                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md" onClick={() => {
-                                        setPopup(true);
-                                    }}>
+                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md">
                                         <div className="flex gap-4">
                                             <div>
                                                 <svg
@@ -77,9 +77,7 @@ const Store = (props: Props) => {
                                 </div>
                                 <div className="flex flex-col justify-between items-center gap-2">
                                     <QuantityButton />
-                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md" onClick={() => {
-                                        setPopup(true);
-                                    }}>
+                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md">
                                         <div className="flex gap-4">
                                             <div>
                                                 <svg
@@ -117,9 +115,7 @@ const Store = (props: Props) => {
                                 </div>
                                 <div className="flex flex-col justify-between items-center gap-2">
                                     <QuantityButton />
-                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md" onClick={() => {
-                                        setPopup(true);
-                                    }}>
+                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md">
                                         <div className="flex gap-4">
                                             <div>
                                                 <svg
@@ -157,9 +153,7 @@ const Store = (props: Props) => {
                                 </div>
                                 <div className="flex flex-col justify-between items-center gap-2">
                                     <QuantityButton />
-                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md" onClick={() => {
-                                        setPopup(true);
-                                    }}>
+                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md">
                                         <div className="flex gap-4">
                                             <div>
                                                 <svg
@@ -197,9 +191,7 @@ const Store = (props: Props) => {
                                 </div>
                                 <div className="flex flex-col justify-between items-center gap-2">
                                     <QuantityButton />
-                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md" onClick={() => {
-                                        setPopup(true);
-                                    }}>
+                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md">
                                         <div className="flex gap-4">
                                             <div>
                                                 <svg
@@ -236,9 +228,7 @@ const Store = (props: Props) => {
                                 </div>
                                 <div className="flex flex-col justify-between items-center gap-2">
                                     <QuantityButton />
-                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md" onClick={() => {
-                                        setPopup(true);
-                                    }}>
+                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md">
                                         <div className="flex gap-4">
                                             <div>
                                                 <svg
