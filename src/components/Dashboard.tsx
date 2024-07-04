@@ -4,9 +4,13 @@ import React from 'react'
 import Graph from '@/components/Graph'
 import Image from 'next/image'
 
-type Props = {}
+type Props = {
+    data: any
+}
 
-const Dashboard = (props: Props) => {
+const Dashboard = ({data}: Props) => {
+
+    console.log(data);
     return (
         <>
             <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
@@ -18,7 +22,7 @@ const Dashboard = (props: Props) => {
                         </div>
                         <div className="text-right">
                             <p className="text-2xl">1,257</p>
-                            <p>Visitors</p>
+                            <p>Visitors {data.name}</p>
                         </div>
                     </div>
                     <div className="bg-custom-theme dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-hover-theme dark:border-gray-600 text-white font-medium group">
