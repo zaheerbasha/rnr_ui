@@ -4,13 +4,9 @@ import React from 'react'
 import Graph from '@/components/Graph'
 import Image from 'next/image'
 
-type Props = {
-    data: any
-}
+type Props = {}
 
-const Dashboard = ({data}: Props) => {
-
-    console.log(data);
+const Dashboard = (props: Props) => {
     return (
         <>
             <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
@@ -21,8 +17,8 @@ const Dashboard = ({data}: Props) => {
                             <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="stroke-current text-hover-theme dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         </div>
                         <div className="text-right">
-                            <p className="text-2xl">1,257</p>
-                            <p>Visitors {data.name}</p>
+                            <p className="text-2xl">2.5k+</p>
+                            <p>Total Employees</p>
                         </div>
                     </div>
                     <div className="bg-custom-theme dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-hover-theme dark:border-gray-600 text-white font-medium group">
@@ -30,7 +26,7 @@ const Dashboard = ({data}: Props) => {
                             <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="stroke-current text-hover-theme dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                         </div>
                         <div className="text-right">
-                            <p className="text-2xl">$11,257</p>
+                            <p className="text-2xl">11,257</p>
                             <p>Awarded Points</p>
                         </div>
                     </div>
@@ -39,7 +35,7 @@ const Dashboard = ({data}: Props) => {
                             <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="stroke-current text-hover-theme dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <div className="text-right">
-                            <p className="text-2xl">$75,257</p>
+                            <p className="text-2xl">75,257</p>
                             <p>Reedemed Points</p>
                         </div>
                     </div>
@@ -60,21 +56,21 @@ const Dashboard = ({data}: Props) => {
                                 <div className="flex flex-col gap-2 bg-transparent border-collapse">
 
                                     <div className="flex justify-evenly text-gray-700 dark:text-gray-100">
-                                    <Image className="object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
+                                        <Image className="object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
                                         <div className="flex flex-col justify-center">
-                                            <div className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap font-bold mx-auto">Star spot Award</div>
-                                            <div className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 mx-auto">Star of the HR Team</div>
+                                            <div className="w-32 border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap font-bold">Star spot Award</div>
+                                            <div className="w-32 border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4">Star of the HR Department</div>
                                         </div>
                                     </div>
 
                                     <div className="flex justify-evenly text-gray-700 dark:text-gray-100">
-                                    <Image className="object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;facepad=3&amp;fit=facearea&amp;s=707b9c33066bf8808c934c8ab394dff6" alt="" loading="lazy" />
+                                        <Image className="object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;facepad=3&amp;fit=facearea&amp;s=707b9c33066bf8808c934c8ab394dff6" alt="" loading="lazy" />
                                         <div className="flex flex-col justify-center">
-                                            <div className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap font-bold mx-auto">Employee Award</div>
-                                            <div className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 mx-auto">Employee of the month</div>
+                                            <div className="w-32 border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap font-bold mx-auto">Employee Award</div>
+                                            <div className="w-32 border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4">Employee of the month</div>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -94,8 +90,8 @@ const Dashboard = ({data}: Props) => {
                                 <div className="w-full overflow-hidden rounded-lg shadow-xs">
                                     <div className="w-full overflow-x-auto">
                                         <table className="w-full">
-                                            <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                                                <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                                            <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 ">
+                                                <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-100">
                                                     <td className="px-4 py-3">
                                                         <div className="flex items-center text-sm">
                                                             <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -103,8 +99,8 @@ const Dashboard = ({data}: Props) => {
                                                                 <div className="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                                             </div>
                                                             <div>
-                                                                <p className="font-semibold">Hans Burger</p>
-                                                                <p className="text-xs text-gray-600 dark:text-gray-400">HR Manager</p>
+                                                                <p className="font-semibold ">Hans Burger</p>
+                                                                <p className="text-xs">HR Manager</p>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -129,7 +125,7 @@ const Dashboard = ({data}: Props) => {
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                                                <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-100">
                                                     <td className="px-4 py-3">
                                                         <div className="flex items-center text-sm">
                                                             <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -138,7 +134,7 @@ const Dashboard = ({data}: Props) => {
                                                             </div>
                                                             <div>
                                                                 <p className="font-semibold">Jolina Angelie</p>
-                                                                <p className="text-xs text-gray-600 dark:text-gray-400">SDE-1</p>
+                                                                <p className="text-xs">SDE-1</p>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -163,7 +159,7 @@ const Dashboard = ({data}: Props) => {
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                                                <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-100">
                                                     <td className="px-4 py-3">
                                                         <div className="flex items-center text-sm">
                                                             <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -200,7 +196,7 @@ const Dashboard = ({data}: Props) => {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+                                    <div className="grid px-4 py-3 text-xs font-semibold tracking-wide uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 text-gray-700 dark:text-gray-100 dark:bg-gray-800">
                                         <span className="flex items-center col-span-3"> Showing 21-30 of 100 </span>
                                         <span className="col-span-2"></span>
                                         {/* <!-- Pagination --> */}
@@ -255,7 +251,7 @@ const Dashboard = ({data}: Props) => {
                 {/* <!-- ./Table --> */}
 
                 {/* <!-- Different Graphs --> */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 p-4 gap-4bg-gray-200 dark:bg-gray-800  text-black dark:text-white">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4 gap-4 bg-gray-200 dark:bg-gray-700 text-black dark:text-white">
                     <div className="md:col-span-2 xl:col-span-1">
                         <div className="rounded bg-gray-200 dark:bg-gray-800 p-3">
                             <div className="flex justify-between py-1 text-black dark:text-white">
