@@ -1,7 +1,7 @@
 'use client'
 import { signOut } from 'next-auth/react';
 import Image from 'next/image';
-import React from 'react'
+import React, { useState } from 'react'
 import '@/styles/darkmode.css'
 import Link from 'next/link';
 
@@ -11,13 +11,20 @@ type Props = {
 }
 
 const Header = ({ darkMode, setDarkMode }: Props) => {
+    const [activeLink, setActiveLink] = useState<string>('/');
 
+    const handleLinkClick = (path: string) => {
+        setActiveLink(path);
+    }
+    const linkClass = (path: string) => `relative flex flex-row items-center h-11 focus:outline-none ${activeLink === path ? 'bg-hover-theme text-white-800 border-hover-theme dark:bg-gray-600' : 'hover:bg-hover-theme dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-transparent hover:border-hover-theme dark:hover:border-gray-800'} pr-6`;
     return (
         <>
             <div className="fixed w-full flex items-center justify-between h-14 text-white z-10">
                 <div className="flex items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-custom-theme dark:bg-gray-800 border-none">
-                    <Link href="/">
-                        <Image className="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden" alt="" width={28} height={28} src={"/razorpay_logo.png"} />
+                    <Link href="/" legacyBehavior>
+                        <a onClick={() => handleLinkClick('/')} className={linkClass('/')}>
+                            <Image className="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden" alt="" width={28} height={28} src={"/razorpay_logo.png"} />
+                        </a>
                     </Link>
                     <span className="hidden md:block">Rewards & Recognition</span>
                 </div>
