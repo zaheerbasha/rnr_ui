@@ -17,7 +17,6 @@ const Profile = (props: Props) => {
 
                         <div className="bg-hover-theme dark:bg-gray-800 flex justify-between">
                             <div className=" max-w-7xl px-4 py-6 bg-hover-theme dark:bg-gray-800 sm:px-6 lg:px-8 hidden lg:block md:block">
-
                                 <Image className=" flex-1 w-48 h-48 rounded-full shadow-lg" width={192} height={192} src={session?.picture!} alt="" />
                             </div>
                             <div className="flex flex-col bg-custom-blue  max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
