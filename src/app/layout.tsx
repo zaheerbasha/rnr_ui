@@ -4,6 +4,7 @@ import "./globals.css";
 import Head from "next/head";
 import { ToastContainer, Zoom } from "react-toastify";
 import Providers from "@/app/providers";
+import LayoutComponent from "@/components/LayoutComponent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +23,6 @@ export default function RootLayout({
       <Head>
         <link rel="icon" href="/rnr_favicon.png" />
         <title>Razorpay RnR</title>
-        <meta name="description" content="This is a one stop place where you will be appreciated with rewards for your performance and you can nominate others for awards & rewards also." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="utf-8" />
       </Head>
       <body className={inter.className}>
         <Providers>
@@ -36,7 +34,9 @@ export default function RootLayout({
               position="top-center"
               theme="dark"
             />
-            {children}
+            <LayoutComponent>
+              {children}
+            </LayoutComponent>
           </div>
         </Providers>
       </body>
