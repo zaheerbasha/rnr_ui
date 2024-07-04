@@ -1,101 +1,126 @@
-import React from 'react'
+'use client'
+import Image from 'next/image'
+import React, { useState } from 'react'
+import ProductSelectionPopup from '@/components/ProductSelectionPopup'
 
 type Props = {}
 
 const Rewards = (props: Props) => {
+    const [popup, setPopup] = useState(false);
+
+    const closePopup = () => {
+        setPopup(false);
+    }
     return (
-        <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-            <div className="lg:pl-4 lg:flex lg:flex-col lg:w-75% mt-5 mx-2">
-                {/* Main Container */}
-                <div className="lg:flex gap-4 items-stretch">
-                    {/* Large Box */}
-                    <div className="md:p-2 p-6 rounded-lg bg-custom-theme dark:bg-gray-900 hover:bg-hover-theme dark:hover:bg-gray-600 align-middle border border-solid border-gray-200 dark:border-gray-500 mb-4 lg:mb-0 shadow-md lg:w-[35%]">
-                        <div className="flex justify-center items-center space-x-5 h-full">
-                            <div className="text-white">
-                                <p>Current balance</p>
-                                <h2 className="text-4xl font-bold">50.365</h2>
-                                <p className="text-center">$25,365</p>
-                            </div>
-                        </div>
+        <>
+            {popup && <ProductSelectionPopup closePopup={closePopup} />}
+            <div className="h-screen bg-gray-300 dark:bg-gray-700 ml-14 mt-14 mb-10 md:ml-64">
+                <div className="lg:flex lg:flex-col lg:w-75% mt-5 mx-2">
+
+                    {/* Right Side button */}
+                    <div className="flex justify-end ml-4 items-stretch">
+                        <div className="p-4 invisible">Invisible Text to adjust Height</div>
+                        <button className="block mr-4 my-auto bg-custom-theme hover:bg-hover-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-gray-500 text-white px-4 py-2 font-bold rounded-md">Add New Award</button>
                     </div>
 
-                    {/* White Box */}
-                    <div className="bg-custom-theme dark:bg-gray-800 text-white p-4 rounded-lg xs:mb-4 max-w-full shadow-md lg:w-[65%]">
-                        {/* Small Boxes */}
-                        <div className="flex flex-wrap justify-between h-full">
-                            {/* Small Box 1 */}
-                            <div
-                                className="cursor-pointer flex-1 bg-gradient-to-r bg-custom-theme dark:bg-gray-900  hover:bg-hover-theme dark:hover:bg-gray-600 rounded-lg flex flex-col items-center justify-center p-4 border border-gray-200 m-2">
-                                <i className="fas fa-hand-holding-usd text-white text-4xl"></i>
-                                <p className="text-white">To deposit</p>
-                            </div>
+                    {/* Badge Cards*/}
+                    <div className="mx-12 p-12 grid gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
-                            {/* Small Box 2 */}
-                            <div
-                                className="cursor-pointer flex-1 bg-gradient-to-r bg-custom-theme dark:bg-gray-900 hover:bg-hover-theme dark:hover:bg-gray-600 rounded-lg flex flex-col items-center justify-center p-4 border border-gray-200 m-2">
-                                <i className="fas fa-exchange-alt text-white text-4xl"></i>
-                                <p className="text-white">Transfer</p>
-                            </div>
-
-                            {/* Small Box 3 */}
-                            <div
-                                className="cursor-pointer flex-1 bg-gradient-to-r bg-custom-theme dark:bg-gray-900 hover:bg-hover-theme dark:hover:bg-gray-600 rounded-lg flex flex-col items-center justify-center p-4 border border-gray-200 m-2">
-                                <i className="fas fa-qrcode text-white text-4xl"></i>
-                                <p className="text-white">Redeem</p>
+                        <div className="flex justify-center items-center">
+                            <div className="flex flex-col w-56 h-56 rounded-3xl bg-custom-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:text-gray-500 text-white">
+                                <Image className="block mt-4 mb-2 mx-auto object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-modern-award-trophy-on-the-table-with-glowing-light-ilages-image_2609250.jpg" alt="" loading="lazy" />
+                                <div className="flex gap-2 justify-between">
+                                    <div className="w-24 h-4 ml-4 text-sm font-bold">SPOT Award</div>
+                                    <div className="text-end w-24 h-12 mr-4 text-sm font-bold">5000</div>
+                                </div>
+                                <div className="flex justify-center space-x-4 ">
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                {/* Table */}
-                <div className="rounded-lg p-4 shadow-md my-4 divide-y dark:divide-gray-700 dark:bg-gray-800 dark:text-gray-100 bg-white divide-gray-200">
-                    <table className="table-auto w-full">
-                        <thead>
-                            <tr>
-                                <th className="px-4 py-2 text-left border-b-2 w-full">
-                                    <h2 className="text-ml font-bold text-gray-500 dark:text-gray-100">Transactions</h2>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="border-b w-full hover:bg-gray-100 dark:hover:bg-gray-900">
-                                <td className="px-4 py-2 text-left align-top w-1/2">
-                                    <div>
-                                        <h2>Trade</h2>
-                                        <p>07/24/2023</p>
-                                    </div>
-                                </td>
-                                <td className="px-4 py-2 text-right text-hover-theme dark:hover:bg-gray-600 w-1/2">
-                                    <p><span>$150</span></p>
-                                </td>
-                            </tr>
-                            <tr className="border-b w-full hover:bg-gray-100 dark:hover:bg-gray-900">
-                                <td className="px-4 py-2 text-left align-top w-1/2">
-                                    <div>
-                                        <h2>Trade</h2>
-                                        <p>06/24/2023</p>
-                                    </div>
-                                </td>
-                                <td className="px-4 py-2 text-right text-hover-theme dark:hover:bg-gray-600 w-1/2">
-                                    <p><span>$15</span></p>
-                                </td>
-                            </tr>
-                            <tr className="border-b w-full hover:bg-gray-100 dark:hover:bg-gray-900">
-                                <td className="px-4 py-2 text-left align-top w-1/2 ">
-                                    <div>
-                                        <h2>Trade</h2>
-                                        <p>02/05/2023</p>
-                                    </div>
-                                </td>
-                                <td className="px-4 py-2 text-right text-hover-theme dark:hover:bg-gray-600 w-1/2">
-                                    <p><span>$50</span></p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <div className="flex justify-center items-center">
+                            <div className="flex flex-col w-56 h-56 rounded-3xl bg-custom-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:text-gray-500 text-white">
+                                <Image className="block mt-4 mb-2 mx-auto object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://visualstudiomagazine.com/-/media/ECG/visualstudiomagazine/Images/IntroImages2018/trophy.jpeg" alt="" loading="lazy" />
+                                <div className="flex gap-2 justify-between">
+                                    <div className="w-24 h-4 ml-4 text-sm font-bold">Finale Award</div>
+                                    <div className="text-end w-24 h-12 mr-4 text-sm font-bold">3000</div>
+                                </div>
+                                <div className="flex justify-center space-x-4 ">
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex justify-center items-center">
+                            <div className="flex flex-col w-56 h-56 rounded-3xl bg-custom-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:text-gray-500 text-white">
+                                <Image className="block mt-4 mb-2 mx-auto object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-modern-award-trophy-on-the-table-with-glowing-light-ilages-image_2609250.jpg" alt="" loading="lazy" />
+                                <div className="flex gap-2 justify-between">
+                                    <div className="w-24 h-4 ml-4 text-sm font-bold">SPOT Award</div>
+                                    <div className="text-end w-24 h-12 mr-4 text-sm font-bold">4000</div>
+                                </div>
+                                <div className="flex justify-center space-x-4 ">
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex justify-center items-center">
+                            <div className="flex flex-col w-56 h-56 rounded-3xl bg-custom-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:text-gray-500 text-white">
+                                <Image className="block mt-4 mb-2 mx-auto object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://www.ndmed.org/image/cache/awards.jpg" alt="" loading="lazy" />
+                                <div className="flex gap-2 justify-between">
+                                    <div className="w-24 h-4 ml-4 text-sm font-bold">Employee Award</div>
+                                    <div className="text-end w-24 h-12 mr-4 text-sm font-bold">6000</div>
+                                </div>
+                                <div className="flex justify-center space-x-4 ">
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex justify-center items-center">
+                            <div className="flex flex-col w-56 h-56 rounded-3xl bg-custom-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:text-gray-500 text-white">
+                                <Image className="block mt-4 mb-2 mx-auto object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-modern-award-trophy-on-the-table-with-glowing-light-ilages-image_2609250.jpg" alt="" loading="lazy" />
+                                <div className="flex gap-2 justify-between">
+                                    <div className="w-24 h-4 ml-4 text-sm font-bold">Hackathon Award</div>
+                                    <div className="text-end w-24 h-12 mr-4 text-sm font-bold">4000</div>
+                                </div>
+                                <div className="flex justify-center space-x-4 ">
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex justify-center items-center">
+                            <div className="flex flex-col w-56 h-56 rounded-3xl bg-custom-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:text-gray-500 text-white">
+                                <Image className="block mt-4 mb-2 mx-auto object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://www.bankofbaroda.in/-/media/project/bob/countrywebsites/india/about-us/awards/employee-happiness-awards-pic.jpg?h=404&iar=0&w=303&hash=AF2A57AF6F8B638CF6184B1C18225DE0" alt="" loading="lazy" />
+                                <div className="flex gap-2 justify-between">
+                                    <div className="w-24 h-4 ml-4 text-sm font-bold">Best Award</div>
+                                    <div className="text-end w-24 h-12 mr-4 text-sm font-bold">5000</div>
+                                </div>
+                                <div className="flex justify-center space-x-4 ">
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

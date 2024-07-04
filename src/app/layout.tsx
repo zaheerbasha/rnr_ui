@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <link rel="icon" href="/rnr_favicon.png" />
+        <link rel="icon" href="/favicon.ico" />
         <title>Razorpay RnR</title>
       </Head>
       <body className={inter.className}>
