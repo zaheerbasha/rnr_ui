@@ -16,7 +16,7 @@ export async function getEmployeeInfo() {
   }
   const email = session?.user?.email;
   console.log(email)
-  const empUrl = 'https://renegades-stage.dev.razorpay.in/employee/'+email
+  const empUrl = 'http://localhost:8007/employee/'+email
   console.log(empUrl)
   const res = await fetch(empUrl,{
     headers: {

@@ -4,7 +4,7 @@ import React from 'react'
 type Props = {}
 
 const page = async (props: Props) => {
-  const res = await fetch('https://renegades-stage.dev.razorpay.in/reward_type',{
+  const res = await fetch('http://localhost:8007/reward_type',{
     headers: {
       "Content-Type":"application/json",
       "Authorization": "Basic cm5yOnJucg=="

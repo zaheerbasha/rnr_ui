@@ -8,7 +8,7 @@ const page = async (props: Props)  => {
   console.log("EMP")
   const emp =  await getEmployeeInfo()
   console.log("EMP",emp)
-  const storeUrl = 'https://renegades-stage.dev.razorpay.in/store/' + emp.id
+  const storeUrl = 'http://localhost:8007/store/' + emp.id
   const res = await fetch(storeUrl,{
     headers: {
       "Content-Type":"application/json",
@@ -17,6 +17,7 @@ const page = async (props: Props)  => {
     cache: 'no-store'
   })
   const resp = await res.json()
+  resp["employee"] = emp
   return (
    <Store data={resp}/>
   )

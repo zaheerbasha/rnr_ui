@@ -7,6 +7,7 @@ import { UserSession } from '@/types/userSession'
 import { useSession } from 'next-auth/react'
 import "@/styles/removescrollbelt.css"
 import { toast } from 'react-toastify'
+import {it} from "node:test";
 
 type Props = {
     data: any
@@ -15,12 +16,8 @@ type Props = {
 const Store = ({ data }: Props) => {
     const [popup, setPopup] = useState(false);
 
-    const closePopup = () => {
-        setPopup(false);
-    }
-
     const purchase = async (item: any) => {
-        await fetch('/purchase', {
+        await fetch('/api/purchase', {
             method: 'POST', // The method of the request
             headers: {
                 'Content-Type': 'application/json' // The type of content being sent
@@ -28,6 +25,11 @@ const Store = ({ data }: Props) => {
             body: JSON.stringify({item, data})
         })
         toast("Purchase Successful !")
+        window.location.reload()
+    }
+
+    const closePopup = () => {
+        setPopup(false);
     }
 
     return (
@@ -46,26 +48,24 @@ const Store = ({ data }: Props) => {
                     {/* Shopping Cards*/}
                     <div className="h-[600px] overflow-auto hide-scrollbar my-8 rounded-3xl bg-gray-100 dark:bg-gray-600 mx-12 p-12 grid gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
-                        {data.items.map((item: any, index: number) => (
-                            <div key={index} className="flex justify-center items-center">
+                        {data.items.map((item: any) => (
+                            <div className="flex justify-center items-center">
                                 <div
                                     className="flex flex-col w-60 h-96 rounded-xl bg-custom-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:text-gray-500 text-white">
                                     <Image className="block mb-2 mx-auto object-fill h-56 w-full rounded-t-xl"
-
-                                        width={96} height={96}
-                                        src="https://contents.mediadecathlon.com/p2153236/8ff54ab7687daad665741f08d7be5d37/p2153236.jpg?format=auto&quality=70&f=650x0"
-                                        alt="" loading="lazy" />
-
+                                           width={96} height={96}
+                                           src={`data:image/jpeg;base64,${item.image1}`}
+                                           alt="" loading="lazy"/>
                                     <div className="flex gap-2 justify-between">
                                         <div className="w-24 h-4 ml-4 text-sm font-bold">{item.name}</div>
                                         <div className="text-end w-24 h-6 mr-4 text-sm font-bold">₹ {item.price}</div>
                                     </div>
                                     <div className="mt-4 flex flex-col justify-between items-center gap-5">
 
-                                        <QuantityButton />
+
+                                        <QuantityButton data={item} />
                                         <button onClick={()=>{
                                             purchase(item);
-
                                         }}
                                             className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md">
                                             <div className="flex gap-4">

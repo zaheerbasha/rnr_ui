@@ -47,6 +47,15 @@ type Props = {
 // };
 
 const Graph = ({ title,graphres }: Props) => {
+  //   const data = [
+  //   { month: 'Jan', [title]: 4 },
+  //   { month: 'Feb', [title]: 3 },
+  //   { month: 'Mar', [title]: 5 },
+  //   { month: 'Apr', [title]: 2 },
+  //   { month: 'May', [title]: 6 },
+  //   { month: 'Jun', [title]: 4 },
+  //   { month: 'Jul', [title]: 3 },
+  // ];
   const data = graphres;
 
   return (

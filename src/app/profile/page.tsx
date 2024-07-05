@@ -8,7 +8,7 @@ const page = async (props: Props) => {
 
   const emp =  await getEmployeeInfo()
 
-  const profileUrl = 'https://renegades-stage.dev.razorpay.in/profile/' + emp.id
+  const profileUrl = 'http://localhost:8007/profile/' + emp.id
 
   const res = await fetch(profileUrl,{
     headers: {

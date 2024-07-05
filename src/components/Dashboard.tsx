@@ -30,7 +30,7 @@ const Dashboard = ({ data }: Props) => {
                             <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="stroke-current text-hover-theme dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         </div>
                         <div className="text-right">
-                            <p className="text-2xl">yoyo</p>
+                            <p className="text-2xl">{data.employee_count.count}</p>
                             <p>Total Employees</p>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ const Dashboard = ({ data }: Props) => {
 
                                     {data.top_achievers.map((item: any) => (
                                         <div  className="flex justify-evenly text-gray-700 dark:text-gray-100">
-                                            <Image className="object-cover w-24 h-24 rounded-full" width={96} height={96} src={`data:image/jpeg;base64,${item.badge}`} alt="" loading="lazy" />
+                                            <Image className="object-cover w-24 h-24 rounded-full" width={96} height={96} src={`data:image/jpeg;base64,${item.reward_badge}`} alt="" loading="lazy" />
                                             <div className="flex flex-col justify-center">
                                                 <div className="w-32 border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap font-bold">{item.rewardee}</div>
                                                 <div className="w-32 border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4">{item.citation}</div>
@@ -250,7 +250,7 @@ const Dashboard = ({ data }: Props) => {
                                         </table>
                                     </div>
                                     <div className="grid px-4 py-3 text-xs font-semibold tracking-wide uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 text-gray-700 dark:text-gray-100 dark:bg-gray-800">
-                                        <span className="flex items-center col-span-3"> Showing 21-30 of 100 </span>
+                                        <span className="flex items-center col-span-3"> Showing 1-1 of 1 </span>
                                         <span className="col-span-2"></span>
                                         {/* <!-- Pagination --> */}
                                         <span className="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
@@ -264,26 +264,28 @@ const Dashboard = ({ data }: Props) => {
                                                         </button>
                                                     </li>
                                                     <li>
-                                                        <button className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">1</button>
+                                                        <button
+                                                            className="px-3 py-1 text-white dark:text-gray-800 transition-colors duration-150 bg-custom-theme dark:bg-gray-100 border border-r-0 border-custom-theme dark:border-gray-100 rounded-md focus:outline-none focus:shadow-outline-purple">1</button>
                                                     </li>
-                                                    <li>
-                                                        <button className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">2</button>
-                                                    </li>
-                                                    <li>
-                                                        <button className="px-3 py-1 text-white dark:text-gray-800 transition-colors duration-150 bg-custom-theme dark:bg-gray-100 border border-r-0 border-custom-theme dark:border-gray-100 rounded-md focus:outline-none focus:shadow-outline-purple">3</button>
-                                                    </li>
-                                                    <li>
-                                                        <button className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">4</button>
-                                                    </li>
-                                                    <li>
-                                                        <span className="px-3 py-1">...</span>
-                                                    </li>
-                                                    <li>
-                                                        <button className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">8</button>
-                                                    </li>
-                                                    <li>
-                                                        <button className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">9</button>
-                                                    </li>
+                                                    {/*<li>*/}
+                                                    {/*    <button*/}
+                                                    {/*        className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">2</button>*/}
+                                                    {/*</li>*/}
+                                                    {/*<li>*/}
+                                                    {/*    <button className="px-3 py-1 text-white dark:text-gray-800 transition-colors duration-150 bg-custom-theme dark:bg-gray-100 border border-r-0 border-custom-theme dark:border-gray-100 rounded-md focus:outline-none focus:shadow-outline-purple">3</button>*/}
+                                                    {/*</li>*/}
+                                                    {/*<li>*/}
+                                                    {/*    <button className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">4</button>*/}
+                                                    {/*</li>*/}
+                                                    {/*<li>*/}
+                                                    {/*    <span className="px-3 py-1">...</span>*/}
+                                                    {/*</li>*/}
+                                                    {/*<li>*/}
+                                                    {/*    <button className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">8</button>*/}
+                                                    {/*</li>*/}
+                                                    {/*<li>*/}
+                                                    {/*    <button className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">9</button>*/}
+                                                    {/*</li>*/}
                                                     <li>
                                                         <button className="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
                                                             <svg className="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
@@ -304,7 +306,7 @@ const Dashboard = ({ data }: Props) => {
                 {/* <!-- ./Table --> */}
 
                 {/* <!-- Different Graphs --> */}
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-4 bg-gray-300 dark:bg-gray-700 text-black dark:text-white">
+                <div className="grid grid-cols-1 md:grid-cols-2 p-4 gap-4 bg-gray-300 dark:bg-gray-700 text-black dark:text-white">
                     <div className="md:col-span-1">
                         <div className="rounded bg-gray-200 dark:bg-gray-800 p-3">
                             <div className="flex justify-between py-1 text-black dark:text-white">
@@ -323,14 +325,14 @@ const Dashboard = ({ data }: Props) => {
                         </div>
                     </div>
 
-                    <div className="md:col-span-1">
-                        <div className="rounded bg-gray-200 dark:bg-gray-800 p-3">
-                            <div className="flex justify-between py-1 text-black dark:text-white">
-                                <h3 className="text-sm font-semibold">Month</h3>
-                            </div>
-                            <Graph title={"Reedeemed points"} graphres={data.graphs} />
-                        </div>
-                    </div>
+                    {/*<div className="md:col-span-1">*/}
+                    {/*    <div className="rounded bg-gray-200 dark:bg-gray-800 p-3">*/}
+                    {/*        <div className="flex justify-between py-1 text-black dark:text-white">*/}
+                    {/*            <h3 className="text-sm font-semibold">Month</h3>*/}
+                    {/*        </div>*/}
+                    {/*        <Graph title={"Reedeemed points"} graphres={data.graphs} />*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
 
 
                 </div>
