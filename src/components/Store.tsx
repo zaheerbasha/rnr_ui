@@ -6,6 +6,7 @@ import ProductSelectionPopup from '@/components/ProductSelectionPopup'
 import { UserSession } from '@/types/userSession'
 import { useSession } from 'next-auth/react'
 import "@/styles/removescrollbelt.css"
+import {toast} from "react-toastify";
 
 type Props = {}
 
@@ -96,7 +97,9 @@ const Store =  (props: Props) => {
                                 </div>
                                 <div className="mt-4 flex flex-col justify-between items-center gap-5">
                                     <QuantityButton />
-                                    <button className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md">
+                                    <button onClick={()=>{
+                                        toast("Purchase Successful !")
+                                    }} className="bg-custom-green hover:bg-hover-green text-white w-36 p-2 font-bold rounded-md">
                                         <div className="flex gap-4">
                                             <div>
                                                 <svg
