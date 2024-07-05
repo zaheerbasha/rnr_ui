@@ -3,13 +3,16 @@ import { UserSession } from '@/types/userSession';
 import { useSession } from 'next-auth/react';
 import '@/styles/darkmode.css'
 import Image from 'next/image';
-import React from 'react'
+import React, { useState } from 'react'
 import "@/styles/removescrollbelt.css"
 
 type Props = {}
 
 const Profile = (props: Props) => {
     const session: UserSession | undefined = useSession().data?.user;
+
+    const [state, setState] = useState("awards");
+
     return (
         <>
             <div className="min-h-[calc(100vh-56px)] h-full bg-gray-300 dark:bg-gray-700 ml-14 mt-14 mb-10 md:ml-64">
@@ -74,125 +77,133 @@ const Profile = (props: Props) => {
                         {/* ./identity-card */}
                     </div>
 
-                    <div className="col-span-2 h-[450px] border-2 bg-custom-theme rounded-3xl">
-                        <div className="m-2 flex justify-center">
-                            <div className="block my-auto bg-custom-green dark:bg-gray-100 dark:text-gray-800 text-white px-4 py-2 font-bold rounded-md">Total: 2100</div>
+                    <div className="col-span-2 h-[450px] border-2 bg-custom-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:text-gray-500 text-white rounded-3xl">
+            <div className="m-2 flex justify-center">
+                <div className="block my-auto bg-custom-orange dark:bg-gray-100 dark:text-gray-800 text-white px-4 py-2 font-bold rounded-md">Total: 2100</div>
+            </div>
+            <div className="flex justify-around">
+                <div className="m-2 flex justify-center">
+                    <button
+                        className={`block my-auto dark:text-white ${state === "awards" ? "bg-custom-green" : "bg-custom-orange hover:bg-custom-green"} px-4 py-2 font-bold rounded-md`}
+                        onClick={() => setState("awards")}
+                    >
+                        Awards
+                    </button>
+                </div>
+                <div className="m-2 flex justify-center">
+                    <button
+                        className={`block my-auto dark:text-white ${state === "redemption" ? "bg-custom-green" : "bg-custom-orange hover:bg-custom-green"} px-4 py-2 font-bold rounded-md`}
+                        onClick={() => setState("redemption")}
+                    >
+                        Redemption
+                    </button>
+                </div>
+            </div>
+
+            {/* Awards List */}
+            {state === "awards" && <div className="shadow-xs text-white dark:text-gray-700 text-sm">
+                <div className="grid grid-cols-5 gap-2 font-bold border-b p-2">
+                    <div className="col-span-1 flex justify-center">S.no</div>
+                    <div className="col-span-1 flex justify-center">Award</div>
+                    <div className="col-span-1 flex justify-center">Points</div>
+                    <div className="col-span-1 flex justify-center">Nominated By</div>
+                    <div className="col-span-1 flex justify-center">Date</div>
+                </div>
+                <div className="h-[280px] hide-scrollbar overflow-auto">
+                    <div className="font-sans">
+                        <div className="grid grid-cols-5 gap-2 font-bold p-2">
+                            <div className="col-span-1 flex justify-center">1.</div>
+                            <div className="col-span-1 flex justify-center">Employee of the year</div>
+                            <div className="col-span-1 flex justify-center">Camera</div>
+                            <div className="col-span-1 flex justify-center m-auto w-fit px-2 rounded-xl text-hover-green bg-white bg-opacity-70">+ 1000</div>
+                            <div className="col-span-1 flex justify-center">24 Jan 2024</div>
                         </div>
-                        <div className="shadow-xs text-white text-sm">
-                                <div className="grid grid-cols-4 gap-2 font-bold border-b p-2">
-                                    <div className="col-span-1 flex justify-center">S.no</div>
-                                    <div className="col-span-1 flex justify-center">Item</div>
-                                    <div className="col-span-1 flex justify-center">Redemption</div>
-                                    <div className="col-span-1 flex justify-center">Date</div>
-                                </div>
-                                <div className="h-[350px] hide-scrollbar overflow-auto">
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">1.</div>
-                                        <div className="col-span-1 flex justify-center">Camera</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 1000</div>
-                                        <div className="col-span-1 flex justify-center">24 Jan 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">2.</div>
-                                        <div className="col-span-1 flex justify-center">Watch</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 500</div>
-                                        <div className="col-span-1 flex justify-center">23 Mar 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">3.</div>
-                                        <div className="col-span-1 flex justify-center">Shoes</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 3000</div>
-                                        <div className="col-span-1 flex justify-center">29 Jul 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">4.</div>
-                                        <div className="col-span-1 flex justify-center">Painting Colours</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 200</div>
-                                        <div className="col-span-1 flex justify-center">8 feb 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">5.</div>
-                                        <div className="col-span-1 flex justify-center">Bracelet</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 4000</div>
-                                        <div className="col-span-1 flex justify-center">24 Apr 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">6.</div>
-                                        <div className="col-span-1 flex justify-center">Camera</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 1000</div>
-                                        <div className="col-span-1 flex justify-center">24 Jan 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">7.</div>
-                                        <div className="col-span-1 flex justify-center">Watch</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 500</div>
-                                        <div className="col-span-1 flex justify-center">23 Mar 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">8.</div>
-                                        <div className="col-span-1 flex justify-center">Shoes</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 3000</div>
-                                        <div className="col-span-1 flex justify-center">29 Jul 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">9.</div>
-                                        <div className="col-span-1 flex justify-center">Painting Colours</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 200</div>
-                                        <div className="col-span-1 flex justify-center">8 feb 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">10.</div>
-                                        <div className="col-span-1 flex justify-center">Bracelet</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 4000</div>
-                                        <div className="col-span-1 flex justify-center">24 Apr 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">11.</div>
-                                        <div className="col-span-1 flex justify-center">Camera</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 1000</div>
-                                        <div className="col-span-1 flex justify-center">24 Jan 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">12.</div>
-                                        <div className="col-span-1 flex justify-center">Watch</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 500</div>
-                                        <div className="col-span-1 flex justify-center">23 Mar 2024</div>
-                                    </div>
-                                </div>
-                                <div className="font-sans">
-                                    <div className="grid grid-cols-4 gap-2 font-bold p-2">
-                                        <div className="col-span-1 flex justify-center">13.</div>
-                                        <div className="col-span-1 flex justify-center">Shoes</div>
-                                        <div className="col-span-1 flex justify-center rounded-xl text-hover-red bg-white bg-opacity-50">- 3000</div>
-                                        <div className="col-span-1 flex justify-center">29 Jul 2024</div>
-                                    </div>
-                                </div>
-                                </div>
+                        <div className="grid grid-cols-5 gap-2 font-bold p-2">
+                            <div className="col-span-1 flex justify-center">2.</div>
+                            <div className="col-span-1 flex justify-center">Employee of the year</div>
+                            <div className="col-span-1 flex justify-center">Camera</div>
+                            <div className="col-span-1 flex justify-center m-auto w-fit px-2 rounded-xl text-hover-green bg-white bg-opacity-70">+ 5000</div>
+                            <div className="col-span-1 flex justify-center">24 Jan 2024</div>
+                        </div>
+                        <div className="grid grid-cols-5 gap-2 font-bold p-2">
+                            <div className="col-span-1 flex justify-center">3.</div>
+                            <div className="col-span-1 flex justify-center">Employee of the year</div>
+                            <div className="col-span-1 flex justify-center">Camera</div>
+                            <div className="col-span-1 flex justify-center m-auto w-fit px-2 rounded-xl text-hover-green bg-white bg-opacity-70">+ 2000</div>
+                            <div className="col-span-1 flex justify-center">24 Jan 2024</div>
+                        </div>
+                        <div className="grid grid-cols-5 gap-2 font-bold p-2">
+                            <div className="col-span-1 flex justify-center">4.</div>
+                            <div className="col-span-1 flex justify-center">Employee of the year</div>
+                            <div className="col-span-1 flex justify-center">Camera</div>
+                            <div className="col-span-1 flex justify-center m-auto w-fit px-2 rounded-xl text-hover-green bg-white bg-opacity-70">+ 3000</div>
+                            <div className="col-span-1 flex justify-center">24 Jan 2024</div>
+                        </div>
+                        <div className="grid grid-cols-5 gap-2 font-bold p-2">
+                            <div className="col-span-1 flex justify-center">5.</div>
+                            <div className="col-span-1 flex justify-center">Employee of the year</div>
+                            <div className="col-span-1 flex justify-center">Camera</div>
+                            <div className="col-span-1 flex justify-center m-auto w-fit px-2 rounded-xl text-hover-green bg-white bg-opacity-70">+ 1000</div>
+                            <div className="col-span-1 flex justify-center">24 Jan 2024</div>
+                        </div>
+                        <div className="grid grid-cols-5 gap-2 font-bold p-2">
+                            <div className="col-span-1 flex justify-center">6.</div>
+                            <div className="col-span-1 flex justify-center">Employee of the year</div>
+                            <div className="col-span-1 flex justify-center">Camera</div>
+                            <div className="col-span-1 flex justify-center m-auto w-fit px-2 rounded-xl text-hover-green bg-white bg-opacity-70">+ 4000</div>
+                            <div className="col-span-1 flex justify-center">24 Jan 2024</div>
                         </div>
                     </div>
+                    {/* More items */}
+                </div>
+            </div>}
+
+            {/* Redemption List */}
+            {state === "redemption" && <div className="shadow-xs text-white dark:text-gray-700 text-sm">
+                <div className="grid grid-cols-4 gap-2 font-bold border-b p-2">
+                    <div className="col-span-1 flex justify-center">S.no</div>
+                    <div className="col-span-1 flex justify-center">Item</div>
+                    <div className="col-span-1 flex justify-center">Redemption</div>
+                    <div className="col-span-1 flex justify-center">Date</div>
+                </div>
+                <div className="h-[280px] hide-scrollbar overflow-auto">
+                    <div className="font-sans">
+                        <div className="grid grid-cols-4 gap-2 font-bold p-2">
+                            <div className="col-span-1 flex justify-center">1.</div>
+                            <div className="col-span-1 flex justify-center">Camera hgfjvkjghjgdcjhvm</div>
+                            <div className="col-span-1 flex justify-center m-auto w-fit px-2 rounded-xl text-hover-red bg-white bg-opacity-50">- 1000</div>
+                            <div className="col-span-1 flex justify-center">24 Jan 2024</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-2 font-bold p-2">
+                            <div className="col-span-1 flex justify-center">2.</div>
+                            <div className="col-span-1 flex justify-center">Camera hgfjvkjghjgdcjhvm</div>
+                            <div className="col-span-1 flex justify-center m-auto w-fit px-2 rounded-xl text-hover-red bg-white bg-opacity-50">- 2000</div>
+                            <div className="col-span-1 flex justify-center">24 Jan 2024</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-2 font-bold p-2">
+                            <div className="col-span-1 flex justify-center">3.</div>
+                            <div className="col-span-1 flex justify-center">Camera hgfjvkjghjgdcjhvm</div>
+                            <div className="col-span-1 flex justify-center m-auto w-fit px-2 rounded-xl text-hover-red bg-white bg-opacity-50">- 3000</div>
+                            <div className="col-span-1 flex justify-center">24 Jan 2024</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-2 font-bold p-2">
+                            <div className="col-span-1 flex justify-center">4.</div>
+                            <div className="col-span-1 flex justify-center">Camera hgfjvkjghjgdcjhvm</div>
+                            <div className="col-span-1 flex justify-center m-auto w-fit px-2 rounded-xl text-hover-red bg-white bg-opacity-50">- 1000</div>
+                            <div className="col-span-1 flex justify-center">24 Jan 2024</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-2 font-bold p-2">
+                            <div className="col-span-1 flex justify-center">5.</div>
+                            <div className="col-span-1 flex justify-center">Camera hgfjvkjghjgdcjhvm</div>
+                            <div className="col-span-1 flex justify-center m-auto w-fit px-2 rounded-xl text-hover-red bg-white bg-opacity-50">- 4000</div>
+                            <div className="col-span-1 flex justify-center">24 Jan 2024</div>
+                        </div>
+                    </div>
+                    {/* More items */}
+                </div>
+            </div>}
+        </div>
+
                 </div>
             </div>
         </>

@@ -5,6 +5,7 @@ import Head from "next/head";
 import { ToastContainer, Zoom } from "react-toastify";
 import Providers from "@/app/providers";
 import LayoutComponent from "@/components/LayoutComponent";
+import 'react-toastify/dist/ReactToastify.css'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,8 @@ export default function RootLayout({
       </Head>
       <body className={inter.className}>
         <Providers>
-          <div className='page-container h-screen'>
+          <div className='h-screen'>
+            <LayoutComponent>
             <ToastContainer
               autoClose={4000}
               hideProgressBar={true}
@@ -33,7 +35,6 @@ export default function RootLayout({
               position="top-center"
               theme="dark"
             />
-            <LayoutComponent>
               {children}
             </LayoutComponent>
           </div>

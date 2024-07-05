@@ -21,9 +21,7 @@ const Rewards = (props: Props) => {
                     {/* Right Side button */}
                     <div className="flex justify-end ml-4 items-stretch">
                         <div className="p-4 invisible">Invisible Text to adjust Height</div>
-                        <button className="block mr-4 my-auto bg-custom-theme hover:bg-hover-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-gray-500 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
-                                        setPopup(true);
-                                    }}>Add New Award</button>
+                        <button className="block mr-4 my-auto bg-custom-theme hover:bg-hover-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-gray-500 text-white px-4 py-2 font-bold rounded-md">Add New Award</button>
                     </div>
 
                     {/* Badge Cards*/}
@@ -37,7 +35,9 @@ const Rewards = (props: Props) => {
                                     <div className="text-end w-24 h-12 mr-4 text-sm font-bold">5000</div>
                                 </div>
                                 <div className="flex justify-center space-x-4 ">
-                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md">Nominate</button>
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,9 @@ const Rewards = (props: Props) => {
                                     <div className="text-end w-24 h-12 mr-4 text-sm font-bold">3000</div>
                                 </div>
                                 <div className="flex justify-center space-x-4 ">
-                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md">Nominate</button>
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +65,9 @@ const Rewards = (props: Props) => {
                                     <div className="text-end w-24 h-12 mr-4 text-sm font-bold">4000</div>
                                 </div>
                                 <div className="flex justify-center space-x-4 ">
-                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md">Nominate</button>
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md"  onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +80,9 @@ const Rewards = (props: Props) => {
                                     <div className="text-end w-24 h-12 mr-4 text-sm font-bold">4000</div>
                                 </div>
                                 <div className="flex justify-center space-x-4 ">
-                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md">Nominate</button>
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +95,9 @@ const Rewards = (props: Props) => {
                                     <div className="text-end w-24 h-12 mr-4 text-sm font-bold">6000</div>
                                 </div>
                                 <div className="flex justify-center space-x-4 ">
-                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md">Nominate</button>
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md"  onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +110,9 @@ const Rewards = (props: Props) => {
                                     <div className="text-end w-24 h-12 mr-4 text-sm font-bold">4000</div>
                                 </div>
                                 <div className="flex justify-center space-x-4 ">
-                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md">Nominate</button>
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +125,9 @@ const Rewards = (props: Props) => {
                                     <div className="text-end w-24 h-12 mr-4 text-sm font-bold">4000</div>
                                 </div>
                                 <div className="flex justify-center space-x-4 ">
-                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md">Nominate</button>
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +140,9 @@ const Rewards = (props: Props) => {
                                     <div className="text-end w-24 h-12 mr-4 text-sm font-bold">5000</div>
                                 </div>
                                 <div className="flex justify-center space-x-4 ">
-                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md">Nominate</button>
+                                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
+                                        setPopup(true);
+                                    }}>Nominate</button>
                                 </div>
                             </div>
                         </div>

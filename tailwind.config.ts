@@ -22,7 +22,7 @@ const config: Config = {
         'custom-green': '#22C55E',
         'hover-green': "#16a34a",
         'custom-orange': '#fb923c',
-        'hover-orange' : '#f97316',
+        'hover-orange' : '#dc2626',
         'custom-red': '#ef4444',
         'hover-red': '#dc2626',
         'custom-pink': '#f472b6',
