@@ -1,18 +1,74 @@
 'use client'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import QuantityButton from '@/components/QuantityButton'
 import ProductSelectionPopup from '@/components/ProductSelectionPopup'
+import { UserSession } from '@/types/userSession'
+import { useSession } from 'next-auth/react'
 import "@/styles/removescrollbelt.css"
 
 type Props = {}
 
-const Store = (props: Props) => {
+const Store =  (props: Props) => {
     const [popup, setPopup] = useState(false);
 
     const closePopup = () => {
         setPopup(false);
     }
+
+    const [employeeData, setEmployeeData] = useState({"id":""}); // State to hold employee data
+    const [walletData, setWalletData] = useState({"balance":0}); // State to hold employee data
+    const session: UserSession | undefined = useSession().data?.user;
+    const email = session?.email!
+
+    useEffect(() => {
+        if (session?.email) {
+          const empUrl = `http://localhost:8007/employee/${session.email}`;
+
+          console.log("URL : ", empUrl)
+
+          fetch(empUrl, {
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Basic cm5yOnJucg=="
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log("EMPLOYEE RESP : ", data)
+            setEmployeeData(data); // Update state with fetched employee data
+          })
+          .catch(error => {
+            console.error('Error fetching employee data:', error);
+            // Handle error state or retry logic as needed
+          });
+        }
+      }, [session?.email]);
+
+
+    useEffect(() => {
+        if (session?.email) {
+          const empUrl = `http://localhost:8007/wallet/${employeeData.id}`;
+
+          console.log("URL : ", empUrl)
+
+          fetch(empUrl, {
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Basic cm5yOnJucg=="
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log("WALLET RESP : ", data)
+            setWalletData(data); // Update state with fetched employee data
+          })
+          .catch(error => {
+            console.error('Error fetching employee data:', error);
+            // Handle error state or retry logic as needed
+          });
+        }
+      }, [session?.email]);
 
     return (
         <>

@@ -3,7 +3,7 @@ import React from 'react'
 
 type Props = {}
 
-const page = (props: Props) => {
+const page = async (props: Props) => {
   return (
    <Profile />
   )
