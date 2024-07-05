@@ -108,8 +108,8 @@ const Dashboard = ({ data }: Props) => {
                                     <div className="w-full overflow-x-auto">
                                         <table className="w-full">
                                             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 ">
-                                            {data.leaderboard.map((item: any) => (
-                                                 <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-100">
+                                            {data.leaderboard.map((item: any, index:number) => (
+                                                 <tr key={index} className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-100">
                                                  <td className="px-4 py-3">
                                                      <div className="flex items-center text-sm">
                                                          <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
