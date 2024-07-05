@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Razorpay RnR",
-  description: "Created By RazorPay Renegades",
+  description: "Created By Razorpay Renegades",
 };
 
 export default function RootLayout({
@@ -22,7 +22,6 @@ export default function RootLayout({
     <html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <title>Razorpay RnR</title>
       </Head>
       <body className={inter.className}>
         <Providers>

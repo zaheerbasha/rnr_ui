@@ -9,7 +9,7 @@ type Props = {}
 const Dashboard = (props: Props) => {
     return (
         <>
-            <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
+            <div className="min-h-[calc(100vh-56px)] h-full bg-gray-300 dark:bg-gray-700 ml-14 mt-14 mb-10 md:ml-64">
                 {/* <!-- Statistics Cards --> */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 gap-4">
                     <div className="bg-custom-theme dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-hover-theme dark:border-gray-600 text-white font-medium group">
@@ -251,8 +251,8 @@ const Dashboard = (props: Props) => {
                 {/* <!-- ./Table --> */}
 
                 {/* <!-- Different Graphs --> */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4 gap-4 bg-gray-200 dark:bg-gray-700 text-black dark:text-white">
-                    <div className="md:col-span-2 xl:col-span-1">
+                <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-4 bg-gray-300 dark:bg-gray-700 text-black dark:text-white">
+                    <div className="md:col-span-1">
                         <div className="rounded bg-gray-200 dark:bg-gray-800 p-3">
                             <div className="flex justify-between py-1 text-black dark:text-white">
                                 <h3 className="text-sm font-semibold">Month</h3>
@@ -261,7 +261,7 @@ const Dashboard = (props: Props) => {
                         </div>
                     </div>
 
-                    <div className="md:col-span-2 xl:col-span-1">
+                    <div className="md:col-span-1">
                         <div className="rounded bg-gray-200 dark:bg-gray-800 p-3">
                             <div className="flex justify-between py-1 text-black dark:text-white">
                                 <h3 className="text-sm font-semibold">Teams</h3>
@@ -270,7 +270,7 @@ const Dashboard = (props: Props) => {
                         </div>
                     </div>
 
-                    <div className="md:col-span-2 xl:col-span-1">
+                    <div className="md:col-span-1">
                         <div className="rounded bg-gray-200 dark:bg-gray-800 p-3">
                             <div className="flex justify-between py-1 text-black dark:text-white">
                                 <h3 className="text-sm font-semibold">Month</h3>

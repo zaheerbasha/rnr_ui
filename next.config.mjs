@@ -66,7 +66,7 @@ const nextConfig = {
         },
         {
           protocol: 'https',
-          hostname: 'rukminim2.flixcart.com',
+          hostname: 'sharpi.in',
           port: '',
           pathname: '/**',
         },
