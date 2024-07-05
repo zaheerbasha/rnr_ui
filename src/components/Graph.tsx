@@ -22,7 +22,7 @@ const Graph = ({ title }: Props) => {
   ];
 
   return (
-    <div className="text-custom-theme dark:text-gray-400 p-4">
+    <div className="text-custom-theme dark:text-gray-400 md:p-4">
       <ResponsiveContainer width="100%" height={300}>
         <BarChart
           data={data}

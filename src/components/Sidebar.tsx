@@ -3,7 +3,7 @@ import { UserSession } from '@/types/userSession'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 type Props = {}
 
