@@ -13,7 +13,8 @@ const page = async (props: Props)  => {
     headers: {
       "Content-Type":"application/json",
       "Authorization": "Basic cm5yOnJucg=="
-    }
+    },
+    cache: 'no-store'
   })
   const resp = await res.json()
   return (

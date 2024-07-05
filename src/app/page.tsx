@@ -9,7 +9,8 @@ export default async function Home() {
     headers: {
       "Content-Type":"application/json",
       "Authorization": "Basic cm5yOnJucg=="
-    }
+    },
+    cache: 'no-store'
   })
   const resp = await res.json()
 

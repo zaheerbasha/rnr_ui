@@ -22,7 +22,8 @@ export async function getEmployeeInfo() {
     headers: {
       "Content-Type":"application/json",
       "Authorization": "Basic cm5yOnJucg=="
-    }
+    },
+    cache: 'no-store'
   })
   const resp = await res.json()
   if (!resp) {

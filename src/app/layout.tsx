@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   description: "Created By Razorpay Renegades",
 };
 
+// Opt out of caching for all data requests in the route segment
+export const dynamic = 'force-dynamic'
+
 export default function RootLayout({
   children,
 }: Readonly<{
