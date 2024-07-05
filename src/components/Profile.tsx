@@ -6,9 +6,11 @@ import Image from 'next/image';
 import React, { useState } from 'react'
 import "@/styles/removescrollbelt.css"
 
-type Props = {}
+type Props = {
+    data : any
+}
 
-const Profile = (props: Props) => {
+const Profile = ({data}: Props) => {
     const session: UserSession | undefined = useSession().data?.user;
 
     const [state, setState] = useState("awards");
@@ -22,12 +24,15 @@ const Profile = (props: Props) => {
                         <Image className="flex-1 w-64 h-64 rounded-full shadow-lg" width={320} height={320} src={session?.picture!} alt="" />
                     </div>
                     <div className="px-4 py-6 sm:px-6 lg:px-8 mx-12 p-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        <Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-modern-award-trophy-on-the-table-with-glowing-light-ilages-image_2609250.jpg" alt="" loading="lazy" />
-                        <Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://visualstudiomagazine.com/-/media/ECG/visualstudiomagazine/Images/IntroImages2018/trophy.jpeg" alt="" loading="lazy" />
-                        <Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-modern-award-trophy-on-the-table-with-glowing-light-ilages-image_2609250.jpg" alt="" loading="lazy" />
-                        <Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://www.ndmed.org/image/cache/awards.jpg" alt="" loading="lazy" />
-                        <Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-modern-award-trophy-on-the-table-with-glowing-light-ilages-image_2609250.jpg" alt="" loading="lazy" />
-                        <Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://www.bankofbaroda.in/-/media/project/bob/countrywebsites/india/about-us/awards/employee-happiness-awards-pic.jpg?h=404&iar=0&w=303&hash=AF2A57AF6F8B638CF6184B1C18225DE0" alt="" loading="lazy" />
+                        {data.badges.map((item: any) => (
+                            <Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src={`data:image/jpeg;base64,${item}`} alt="" loading="lazy" />
+                        ))}
+                        {/*<Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-modern-award-trophy-on-the-table-with-glowing-light-ilages-image_2609250.jpg" alt="" loading="lazy" />*/}
+                        {/*<Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://visualstudiomagazine.com/-/media/ECG/visualstudiomagazine/Images/IntroImages2018/trophy.jpeg" alt="" loading="lazy" />*/}
+                        {/*<Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-modern-award-trophy-on-the-table-with-glowing-light-ilages-image_2609250.jpg" alt="" loading="lazy" />*/}
+                        {/*<Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://www.ndmed.org/image/cache/awards.jpg" alt="" loading="lazy" />*/}
+                        {/*<Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-modern-award-trophy-on-the-table-with-glowing-light-ilages-image_2609250.jpg" alt="" loading="lazy" />*/}
+                        {/*<Image className="block w-32 h-32 rounded-full shadow-lg" width={128} height={128} src="https://www.bankofbaroda.in/-/media/project/bob/countrywebsites/india/about-us/awards/employee-happiness-awards-pic.jpg?h=404&iar=0&w=303&hash=AF2A57AF6F8B638CF6184B1C18225DE0" alt="" loading="lazy" />*/}
                     </div>
 
                 </div>
@@ -55,7 +60,7 @@ const Profile = (props: Props) => {
                             </div>
                             <div className="flex justify-between">
                                 <div className="">Designation:</div>
-                                <div className="">SDE-2</div>
+                                <div className="">{data.employee.designation}</div>
                             </div>
                         </div>
                         {/* ./identity-card */}

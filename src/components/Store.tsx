@@ -27,7 +27,7 @@ const Store =  ({data}: Props) => {
 
                     {/* Right Side button */}
                     <div className="flex justify-between mx-4 items-stretch">
-                        <div className="bg-custom-theme dark:bg-gray-100 dark:text-gray-800 text-white p-4 font-bold rounded-md">Balance: 2100</div>
+                        <div className="bg-custom-theme dark:bg-gray-100 dark:text-gray-800 text-white p-4 font-bold rounded-md">Balance: {data.balance}</div>
                         <button className="block my-auto bg-custom-theme hover:bg-hover-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-gray-500 text-white px-4 py-2 font-bold rounded-md" onClick={() => {
                                         setPopup(true);
                                     }}>Add New Item</button>
@@ -42,14 +42,14 @@ const Store =  ({data}: Props) => {
                                     className="flex flex-col w-60 h-96 rounded-xl bg-custom-theme dark:bg-gray-100 dark:text-gray-800 dark:hover:text-gray-500 text-white">
                                     <Image className="block mb-2 mx-auto object-fill h-56 w-full rounded-t-xl"
                                            width={96} height={96}
-                                           src="https://contents.mediadecathlon.com/p2153236/8ff54ab7687daad665741f08d7be5d37/p2153236.jpg?format=auto&quality=70&f=650x0"
+                                           src={`data:image/jpeg;base64,${item.image1}`}
                                            alt="" loading="lazy"/>
                                     <div className="flex gap-2 justify-between">
                                         <div className="w-24 h-4 ml-4 text-sm font-bold">{item.name}</div>
                                         <div className="text-end w-24 h-6 mr-4 text-sm font-bold">₹ {item.price}</div>
                                     </div>
                                     <div className="mt-4 flex flex-col justify-between items-center gap-5">
-                                        <QuantityButton/>
+                                        <QuantityButton data={item} />
                                         <button onClick={() => {
                                             toast("Purchase Successful !")
                                         }}
