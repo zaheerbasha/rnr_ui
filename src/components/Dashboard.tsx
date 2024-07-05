@@ -3,10 +3,23 @@ import '@/styles/darkmode.css'
 import React from 'react'
 import Graph from '@/components/Graph'
 import Image from 'next/image'
+import { UserSession } from '@/types/userSession'
+import Email from "next-auth/providers/email";
+import { useSession } from 'next-auth/react'
 
-type Props = {}
+type Props = {
+    data: any
+}
 
-const Dashboard = (props: Props) => {
+const Dashboard = ({ data }: Props) => {
+
+    const session: UserSession | undefined = useSession().data?.user;
+
+    const empUrl = '/employee/'+session?.email!
+
+
+    console.log("JSON")
+    console.log(empUrl)
     return (
         <>
             <div className="min-h-[calc(100vh-56px)] h-full bg-gray-300 dark:bg-gray-700 ml-14 mt-14 mb-10 md:ml-64">
@@ -17,7 +30,7 @@ const Dashboard = (props: Props) => {
                             <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="stroke-current text-hover-theme dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         </div>
                         <div className="text-right">
-                            <p className="text-2xl">2.5k+</p>
+                            <p className="text-2xl">yoyo</p>
                             <p>Total Employees</p>
                         </div>
                     </div>
@@ -26,7 +39,7 @@ const Dashboard = (props: Props) => {
                             <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="stroke-current text-hover-theme dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                         </div>
                         <div className="text-right">
-                            <p className="text-2xl">11,257</p>
+                            <p className="text-2xl">{data.awarded_total}</p>
                             <p>Awarded Points</p>
                         </div>
                     </div>
@@ -35,7 +48,7 @@ const Dashboard = (props: Props) => {
                             <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="stroke-current text-hover-theme dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <div className="text-right">
-                            <p className="text-2xl">75,257</p>
+                            <p className="text-2xl">{data.redeemed_total}</p>
                             <p>Reedemed Points</p>
                         </div>
                     </div>
@@ -55,21 +68,25 @@ const Dashboard = (props: Props) => {
                             <div className="block w-full overflow-x-auto">
                                 <div className="flex flex-col gap-2 bg-transparent border-collapse">
 
-                                    <div className="flex justify-evenly text-gray-700 dark:text-gray-100">
+                                    {data.top_achievers.map((item: any) => (
+                                        <div  className="flex justify-evenly text-gray-700 dark:text-gray-100">
+                                            <Image className="object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
+                                            <div className="flex flex-col justify-center">
+                                                <div className="w-32 border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap font-bold">{item.rewardee}</div>
+                                                <div className="w-32 border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4">{item.citation}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+
+                                    {/* <div className="flex justify-evenly text-gray-700 dark:text-gray-100">
                                         <Image className="object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
                                         <div className="flex flex-col justify-center">
-                                            <div className="w-32 border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap font-bold">Star spot Award</div>
-                                            <div className="w-32 border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4">Star of the HR Department</div>
+                                            <div className="w-32 border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap font-bold">{data.top_achievers[0].rewardee}</div>
+                                            <div className="w-32 border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4">{data.top_achievers[0].citation}</div>
                                         </div>
-                                    </div>
+                                    </div> */}
 
-                                    <div className="flex justify-evenly text-gray-700 dark:text-gray-100">
-                                        <Image className="object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;facepad=3&amp;fit=facearea&amp;s=707b9c33066bf8808c934c8ab394dff6" alt="" loading="lazy" />
-                                        <div className="flex flex-col justify-center">
-                                            <div className="w-32 border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap font-bold mx-auto">Employee Award</div>
-                                            <div className="w-32 border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4">Employee of the month</div>
-                                        </div>
-                                    </div>
+                                    
 
                                 </div>
                             </div>
@@ -91,7 +108,43 @@ const Dashboard = (props: Props) => {
                                     <div className="w-full overflow-x-auto">
                                         <table className="w-full">
                                             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 ">
-                                                <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-100">
+                                            {data.leaderboard.map((item: any) => (
+                                                 <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-100">
+                                                 <td className="px-4 py-3">
+                                                     <div className="flex items-center text-sm">
+                                                         <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                                             <img className="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
+                                                             <div className="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                                         </div>
+                                                         <div>
+                                                             <p className="font-semibold ">{item.employee.name}</p>
+                                                             <p className="text-xs">{item.employee.designation}</p>
+                                                         </div>
+                                                     </div>
+                                                 </td>
+                                                 <td className="px-4 py-3 text-xs">
+                                                     <span className="px-2 py-1 font-semibold leading-tight rounded-full"> {item.employee.team_id} </span>
+                                                 </td>
+                                                 <td className="px-4 py-3 text-sm">{item.wallet.balance}</td>
+                                                 <td className="px-4 py-3 text-sm">
+                                                     <div className="flex gap-2">
+                                                         <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                                             <img className="object-cover w-full h-full rounded-full" src={`data:image/jpeg;base64,${item.string_agg}`} alt="" loading="lazy" />
+                                                             <div className="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                                         </div>
+                                                         <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                                             <img className="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/photo-1596574744366-27bbd11e9a01?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=60" alt="" loading="lazy" />
+                                                             <div className="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                                         </div>
+                                                         <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                                             <img className="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/photo-1572598354620-c32d5ff22ab3?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=60" alt="" loading="lazy" />
+                                                             <div className="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                                         </div>
+                                                     </div>
+                                                 </td>
+                                             </tr>
+                                            ))}
+                                                {/* <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-100">
                                                     <td className="px-4 py-3">
                                                         <div className="flex items-center text-sm">
                                                             <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -99,19 +152,19 @@ const Dashboard = (props: Props) => {
                                                                 <div className="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                                             </div>
                                                             <div>
-                                                                <p className="font-semibold ">Hans Burger</p>
-                                                                <p className="text-xs">HR Manager</p>
+                                                                <p className="font-semibold ">{data.leaderboard[0].employee.name}</p>
+                                                                <p className="text-xs">{data.leaderboard[0].employee.designation}</p>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td className="px-4 py-3 text-xs">
-                                                        <span className="px-2 py-1 font-semibold leading-tight rounded-full"> HR </span>
+                                                        <span className="px-2 py-1 font-semibold leading-tight rounded-full"> {data.leaderboard[0].employee.team_id} </span>
                                                     </td>
-                                                    <td className="px-4 py-3 text-sm">$855.85</td>
+                                                    <td className="px-4 py-3 text-sm">{data.leaderboard[0].wallet.balance}</td>
                                                     <td className="px-4 py-3 text-sm">
                                                         <div className="flex gap-2">
                                                             <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                                                <img className="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/photo-1581976117747-e2aeb032e082?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=60" alt="" loading="lazy" />
+                                                                <img className="object-cover w-full h-full rounded-full" src={`data:image/jpeg;base64,${data.leaderboard[0].string_agg}`} alt="" loading="lazy" />
                                                                 <div className="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                                             </div>
                                                             <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -192,7 +245,7 @@ const Dashboard = (props: Props) => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                </tr>
+                                                </tr> */}
                                             </tbody>
                                         </table>
                                     </div>
@@ -255,9 +308,9 @@ const Dashboard = (props: Props) => {
                     <div className="md:col-span-1">
                         <div className="rounded bg-gray-200 dark:bg-gray-800 p-3">
                             <div className="flex justify-between py-1 text-black dark:text-white">
-                                <h3 className="text-sm font-semibold">Month</h3>
+                                <h3 className="text-sm font-semibold">Awards</h3>
                             </div>
-                            <Graph title={"Awards"} />
+                            <Graph title={"awards"} graphres={data.graphs.awards_by_month} />
                         </div>
                     </div>
 
@@ -266,7 +319,7 @@ const Dashboard = (props: Props) => {
                             <div className="flex justify-between py-1 text-black dark:text-white">
                                 <h3 className="text-sm font-semibold">Teams</h3>
                             </div>
-                            <Graph title={"Awards"} />
+                            <Graph title={"redeemed_points"} graphres={data.graphs.redeemed_by_month} />
                         </div>
                     </div>
 
@@ -275,7 +328,7 @@ const Dashboard = (props: Props) => {
                             <div className="flex justify-between py-1 text-black dark:text-white">
                                 <h3 className="text-sm font-semibold">Month</h3>
                             </div>
-                            <Graph title={"Reedeemed points"} />
+                            <Graph title={"Reedeemed points"} graphres={data.graphs} />
                         </div>
                     </div>
 
