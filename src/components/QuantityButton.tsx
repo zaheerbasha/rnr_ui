@@ -1,9 +1,11 @@
 'use client'
 import React, { useContext, useEffect, useState } from "react";
 
-type Props= { }
+type Props= {
+  data : any
+}
 
-const QuantityButton = (props:Props) => {
+const QuantityButton = ({data}:Props) => {
   const [value,setValue]=useState<number | undefined>(0);
 
   const selectProduct = () => {
@@ -70,7 +72,7 @@ const QuantityButton = (props:Props) => {
           className="md:w-32 h-9 mx-2 my-2 md:my-0 flex border border-custom-pink bg-custom-pink text-custom-buttonText font-bold rounded-md text-xs md:text-base items-center justify-center cursor-pointer"
           type="button"
         >
-          Add
+          {data.quantity}
         </button>
       )}
     </>

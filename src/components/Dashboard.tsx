@@ -68,9 +68,9 @@ const Dashboard = ({ data }: Props) => {
                             <div className="block w-full overflow-x-auto">
                                 <div className="flex flex-col gap-2 bg-transparent border-collapse">
 
-                                    {data.top_achievers.map((item: any, index:number) => (
-                                        <div  key={index} className="flex justify-evenly text-gray-700 dark:text-gray-100">
-                                            <Image className="object-cover w-24 h-24 rounded-full" width={96} height={96} src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
+                                    {data.top_achievers.map((item: any) => (
+                                        <div  className="flex justify-evenly text-gray-700 dark:text-gray-100">
+                                            <Image className="object-cover w-24 h-24 rounded-full" width={96} height={96} src={`data:image/jpeg;base64,${item.badge}`} alt="" loading="lazy" />
                                             <div className="flex flex-col justify-center">
                                                 <div className="w-32 border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap font-bold">{item.rewardee}</div>
                                                 <div className="w-32 border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-4">{item.citation}</div>
